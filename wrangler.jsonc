@@ -55,26 +55,23 @@
             "remote": true
         }
     ],
-	// Cloudflare Containers - Commented out due to 403 Forbidden error
-	// Requires special permissions and may not be available for all accounts
-	// Using external sandbox service via SANDBOX_SERVICE_URL environment variable instead
-	// To re-enable containers, uncomment this section and ensure your API token has containers permissions
-	// "containers": [
-	// 	{
-	// 		"class_name": "UserAppSandboxService",
-	// 		"image": "./SandboxDockerfile",
-    //         // "image": "registry.cloudflare.com/vibesdk-production-userappsandboxservice:cfe197fc",
-    //         // Altering max_instances value will have no effect. Please use the MAX_SANDBOX_INSTANCES var instead.
-	// 		"max_instances": 1400,
-    //         // ATTENTION: Altering instance_type value will have no effect. Please use the SANDBOX_INSTANCE_TYPE var instead.
-    //         "instance_type": {
-    //             "vcpu": 4,
-    //             "memory_mib": 8192,
-    //             "disk_mb": 10240
-    //         },
-    //         "rollout_step_percentage": 100
-	// 	}
-	// ],
+	"containers": [
+		{
+			"class_name": "UserAppSandboxService",
+			"image": "./SandboxDockerfile",
+			"binding": "container-manager",
+            // "image": "registry.cloudflare.com/vibesdk-production-userappsandboxservice:cfe197fc",
+            // Altering max_instances value will have no effect. Please use the MAX_SANDBOX_INSTANCES var instead.
+			"max_instances": 1400,
+            // ATTENTION: Altering instance_type value will have no effect. Please use the SANDBOX_INSTANCE_TYPE var instead.
+            "instance_type": {
+                "vcpu": 4,
+                "memory_mib": 8192,
+                "disk_mb": 10240
+            },
+            "rollout_step_percentage": 100
+		}
+	],
 	"d1_databases": [
 		{
 			"binding": "DB",
@@ -90,11 +87,10 @@
 				"class_name": "CodeGeneratorAgent",
 				"name": "CodeGenObject"
 			},
-            // UserAppSandboxService binding removed - using external sandbox service
-            // {
-            //     "class_name": "UserAppSandboxService",
-            //     "name": "Sandbox"
-            // },
+            {
+                "class_name": "UserAppSandboxService",
+                "name": "Sandbox"
+            },
             {
                 "class_name": "DORateLimitStore",
                 "name": "DORateLimitStore"
@@ -121,8 +117,8 @@
 	"migrations": [
 		{
 			"new_sqlite_classes": [
-				"CodeGeneratorAgent"
-				// "UserAppSandboxService" removed - using external sandbox service
+				"CodeGeneratorAgent",
+				"UserAppSandboxService"
 			],
 			"tag": "v1"
 		},
@@ -154,10 +150,6 @@
         "MAX_SANDBOX_INSTANCES": "10",
         "SANDBOX_INSTANCE_TYPE": "standard-4",
         "USE_CLOUDFLARE_IMAGES": "yes"
-        // IMPORTANT: Since containers are disabled, you must set these via Cloudflare dashboard or .prod.vars:
-        // "SANDBOX_SERVICE_TYPE": "runner",
-        // "SANDBOX_SERVICE_URL": "your-sandbox-service-url",
-        // "SANDBOX_SERVICE_API_KEY": "your-sandbox-api-key"
     },
 	"workers_dev": false,
 	"preview_urls": false
