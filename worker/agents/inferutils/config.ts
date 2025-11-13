@@ -46,7 +46,7 @@ Use these configs instead for better performance, less bugs and costs:
         fallbackModel: AIModels.CLAUDE_4_SONNET,
     },
 
-For real time code fixer, here are some alternatives: 
+For real time code fixer, here are some alternatives:
     realtimeCodeFixer: {
         name: AIModels.CEREBRAS_QWEN_3_CODER,
         reasoning_effort: undefined,
@@ -57,12 +57,27 @@ For real time code fixer, here are some alternatives:
 
 OR
     realtimeCodeFixer: {
-        name: AIModels.KIMI_2_5,
-        providerOverride: 'direct',
-        reasoning_effort: 'medium',
+        name: AIModels.GROK_4_FAST_REASONING,
+        reasoning_effort: undefined,
         max_tokens: 32000,
         temperature: 0.7,
-        fallbackModel: AIModels.OPENAI_OSS,
+        fallbackModel: AIModels.GEMINI_2_5_FLASH,
+    },
+
+Using Grok models via Cloudflare AI Gateway:
+    conversationalResponse: {
+        name: AIModels.GROK_2_1212,
+        reasoning_effort: undefined,
+        max_tokens: 4000,
+        temperature: 0.7,
+        fallbackModel: AIModels.GEMINI_2_5_FLASH,
+    },
+    deepDebugger: {
+        name: AIModels.GROK_4_FAST_REASONING,
+        reasoning_effort: undefined,
+        max_tokens: 8000,
+        temperature: 0.5,
+        fallbackModel: AIModels.GEMINI_2_5_PRO,
     },
 */
 
