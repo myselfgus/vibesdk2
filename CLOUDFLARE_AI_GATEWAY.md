@@ -101,14 +101,12 @@ Edit `worker/agents/inferutils/config.ts`:
 export const AGENT_CONFIG: AgentConfig = {
     phaseImplementation: {
         name: AIModels.GROK_4_FAST_REASONING,
-        reasoning_effort: undefined,
         max_tokens: 64000,
         temperature: 0.2,
         fallbackModel: AIModels.GEMINI_2_5_PRO,
     },
     deepDebugger: {
         name: AIModels.GROK_4_FAST_REASONING,
-        reasoning_effort: undefined,
         max_tokens: 8000,
         temperature: 0.5,
         fallbackModel: AIModels.GEMINI_2_5_PRO,
