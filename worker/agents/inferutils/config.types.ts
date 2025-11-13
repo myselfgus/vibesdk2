@@ -43,6 +43,12 @@ export enum AIModels {
     // Cerebras models
     CEREBRAS_GPT_OSS = 'cerebras/gpt-oss-120b',
     CEREBRAS_QWEN_3_CODER = 'cerebras/qwen-3-coder-480b',
+
+    // xAI (Grok) models
+    GROK_BETA = 'xai/grok-beta',
+    GROK_2_1212 = 'xai/grok-2-1212',
+    GROK_2_VISION_1212 = 'xai/grok-2-vision-1212',
+    GROK_4_FAST_REASONING = 'xai/grok-4-fast-reasoning',
 }
 
 export interface ModelConfig {
