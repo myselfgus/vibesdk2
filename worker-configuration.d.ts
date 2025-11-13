@@ -45,7 +45,9 @@ declare namespace Cloudflare {
 		SENTRY_DSN: string;
 		CodeGenObject: DurableObjectNamespace<import("./worker/index").CodeGeneratorAgent>;
 		Sandbox: DurableObjectNamespace<import("./worker/index").UserAppSandboxService>;
+		ExternalSandbox: DurableObjectNamespace; // External DO from "sandbox" worker
 		DORateLimitStore: DurableObjectNamespace<import("./worker/index").DORateLimitStore>;
+		CONTAINERS_MANAGER: Fetcher; // Service binding to "containers-manager" worker
 		TEMPLATES_BUCKET: R2Bucket;
 		DB: D1Database;
 		DISPATCHER: DispatchNamespace;
