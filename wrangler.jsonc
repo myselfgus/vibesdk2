@@ -55,6 +55,14 @@
             "remote": true
         }
     ],
+	// Service binding to external containers-manager worker
+	"services": [
+		{
+			"binding": "CONTAINERS_MANAGER",
+			"service": "containers-manager",
+			"environment": "production"
+		}
+	],
 	"containers": [
 		{
 			"class_name": "UserAppSandboxService",
@@ -80,6 +88,12 @@
             {
                 "class_name": "UserAppSandboxService",
                 "name": "Sandbox"
+            },
+            {
+                "class_name": "Sandbox",
+                "name": "ExternalSandbox",
+                "script_name": "sandbox",
+                "environment": "production"
             },
             {
                 "class_name": "DORateLimitStore",
